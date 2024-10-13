@@ -1,5 +1,6 @@
 package sprintfinalmodulodos;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
@@ -51,8 +52,7 @@ public class Principal{
                     String telefono = scanner.nextLine();                    
                     System.out.print("Ingrese AFP: "); 
                     String afp = scanner.nextLine();                    
-                    System.out.print("Ingrese sistema de salud (1: Fonasa,"
-                            + " 2: Isapre): ");
+                    System.out.print("Ingrese sistema de salud (1: Fonasa, 2: Isapre): ");
                     int sistemaSalud = scanner.nextInt();
                     scanner.nextLine();                    
                     System.out.print("Ingrese dirección: ");
