@@ -2,7 +2,7 @@
 **_<h2 align="center">Módulo 2 - Fundamentos de Programación en Java</h2>_**
 
 - Ejercicio desarrollado por Katherine Alderete
-- [Sprint Final](https://github.com/KathyAlde21/ejerciciosIndividualesAppMoviles/tree/master/src/sprintFinal)
+- [Sprint Final](https://github.com/KathyAlde21/sprint_final_modulo_dos)
 
 
 

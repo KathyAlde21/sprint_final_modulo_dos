@@ -1,12 +1,12 @@
 package sprintfinalmodulodos;
 
-import java.time.LocalDate;
 import java.util.Scanner;
+
 
 public class Principal{
     
     public static void main(String[] args) {
-       // System.out.println("Hola Mundo");
+        System.out.println("Hola Mundo");
         Scanner scanner = new Scanner(System.in);
         Contenedor contenedor = new Contenedor();
         int opcion;
@@ -60,7 +60,7 @@ public class Principal{
                     System.out.print("Ingrese comuna: ");
                     String comuna = scanner.nextLine();
                     //----------
-                    Cliente cliente = new Cliente (rutCliente, nombres, apellidos, telefono, afp, sistemaSalud, direccion, comuna, edad, nombres, LocalDate.MIN, edad);
+                    Cliente cliente = new Cliente ();
                     contenedor.almacenarCliente(cliente);
                     //----------                    
                     System.out.println("Los datos ingresados son: RUT: " 
@@ -85,7 +85,7 @@ public class Principal{
                     System.out.print("Ingrese fecha de ingreso (dd/mm/yyyy): ");
                     String fechaIngreso = scanner.nextLine();
                     //----------
-                    Profesional profesional = new Profesional(titulo, LocalDate.MIN, nombres, LocalDate.MIN, edad);
+                    Profesional profesional = new Profesional();
                     contenedor.almacenarProfesional(profesional);
                     //-----------
                     System.out.println("Los datos ingresados son: Nombre: "
@@ -111,7 +111,7 @@ public class Principal{
                     System.out.print("Ingrese experiencia previa: ");
                     String experienciaPrevia = scanner.nextLine();
                     //-----------
-                    Administrativo administrativo = new Administrativo(rut, area, experienciaPrevia, nombres, LocalDate.MIN, edad);
+                    Administrativo administrativo = new Administrativo();
                     contenedor.almacenarAdministrativo(administrativo);
                     //-----------
                     System.out.println("Los datos ingresados son: Nombre: " 
@@ -142,7 +142,7 @@ public class Principal{
                     int cantidadAsistentes = scanner.nextInt();
                     scanner.nextLine();
                     //-----------
-                    Capacitacion capacitacion = new Capacitacion(identificador, rutCliente, dia, hora, lugar, duracion, cantidadAsistentes);
+                    Capacitacion capacitacion = new Capacitacion();
                     contenedor.almacenarCapacitacion(capacitacion);
                     //-----------
                     System.out.println("Los datos ingresados son: Identificador"
