@@ -1,4 +1,4 @@
-package sprintfinalmodulodos;
+package sprintfinalmodulodos.contenedor;
 
 public interface Asesoria {
     

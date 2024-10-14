@@ -1,7 +1,9 @@
 
-package sprintfinalmodulodos;
+package sprintfinalmodulodos.trabajador;
 
+import sprintfinalmodulodos.trabajador.Usuario;
 import java.time.LocalDate;
+import sprintfinalmodulodos.contenedor.Asesoria;
 
 public class Cliente extends Usuario implements Asesoria {
     

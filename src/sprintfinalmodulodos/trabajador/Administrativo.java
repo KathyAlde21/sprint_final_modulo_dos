@@ -1,4 +1,4 @@
-package sprintfinalmodulodos;
+package sprintfinalmodulodos.trabajador;
 
 import java.time.LocalDate;
 

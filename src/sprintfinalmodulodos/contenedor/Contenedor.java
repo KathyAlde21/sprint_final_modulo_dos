@@ -1,6 +1,12 @@
-package sprintfinalmodulodos;
+package sprintfinalmodulodos.contenedor;
 
 
+import sprintfinalmodulodos.contenedor.Capacitacion;
+import sprintfinalmodulodos.contenedor.Asesoria;
+import sprintfinalmodulodos.trabajador.Cliente;
+import sprintfinalmodulodos.trabajador.Usuario;
+import sprintfinalmodulodos.trabajador.Administrativo;
+import sprintfinalmodulodos.trabajador.Profesional;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,10 @@
 
-package sprintfinalmodulodos;
+package sprintfinalmodulodos.trabajador;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import sprintfinalmodulodos.contenedor.Asesoria;
 
 public class Usuario implements Asesoria {
     

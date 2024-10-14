@@ -1,6 +1,11 @@
 package sprintfinalmodulodos;
 
-import java.time.LocalDate;
+import sprintfinalmodulodos.contenedor.Contenedor;
+import sprintfinalmodulodos.contenedor.Capacitacion;
+import sprintfinalmodulodos.trabajador.Cliente;
+import sprintfinalmodulodos.trabajador.Administrativo;
+import sprintfinalmodulodos.trabajador.Profesional;
+//import java.time.LocalDate;
 import java.util.Scanner;
 
 
@@ -36,7 +41,7 @@ public class Principal{
 
             switch (opcion) {
                 case 1 -> { //Almacenar Cliente
-                    System.out.print("Ingrese RUT: ");
+                    System.out.print("Ingrese RUT sin guion: ");
                     int rutCliente = scanner.nextInt();
                     scanner.nextLine();                    
                     System.out.print("Ingrese nombre: ");
@@ -48,14 +53,14 @@ public class Principal{
                     System.out.print("Ingrese edad: ");                    
                     int edad = scanner.nextInt();
                     scanner.nextLine();                    
-                    System.out.print("Ingrese teléfono: ");
+                    System.out.print("Ingrese telefono: ");
                     String telefono = scanner.nextLine();                    
                     System.out.print("Ingrese AFP: "); 
                     String afp = scanner.nextLine();                    
                     System.out.print("Ingrese sistema de salud (1: Fonasa, 2: Isapre): ");
                     int sistemaSalud = scanner.nextInt();
                     scanner.nextLine();                    
-                    System.out.print("Ingrese dirección: ");
+                    System.out.print("Ingrese direccion: ");
                     String direccion = scanner.nextLine();                    
                     System.out.print("Ingrese comuna: ");
                     String comuna = scanner.nextLine();
@@ -77,10 +82,10 @@ public class Principal{
                     String nombres = scanner.nextLine();                    
                     System.out.print("Ingrese fecha de nacimiento (dd/mm/yyyy): ");
                     String fechaNacimiento = scanner.nextLine();
-                    System.out.print("Ingrese RUT: ");
+                    System.out.print("Ingrese RUT sin guion: ");
                     int rut = scanner.nextInt();
                     scanner.nextLine();                    
-                    System.out.print("Ingrese título: ");
+                    System.out.print("Ingrese titulo: ");
                     String titulo = scanner.nextLine();                    
                     System.out.print("Ingrese fecha de ingreso (dd/mm/yyyy): ");
                     String fechaIngreso = scanner.nextLine();
@@ -94,18 +99,17 @@ public class Principal{
                             + ", Titulo: " + titulo
                             + ", Fecha de Ingreso: " + fechaIngreso);
                     contenedor.guardarProfesionales();  
-                    //-----------
-                }   
-                    
+                } 
+                //------------------------------------------------------------------        
                 case 3-> { //Almacenar Administrativo
                     System.out.print("Ingrese nombre: ");
                     String nombres = scanner.nextLine();                    
                     System.out.print("Ingrese fecha de nacimiento (dd/mm/yyyy): ");
                     String fechaNacimiento = scanner.nextLine();                  
-                    System.out.print("Ingrese RUT: ");
+                    System.out.print("Ingrese RUT sin guion: ");
                     int rut = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("Ingrese área: ");
+                    System.out.print("Ingrese area: ");
                     String area = scanner.nextLine();
                     
                     System.out.print("Ingrese experiencia previa: ");
@@ -120,23 +124,22 @@ public class Principal{
                             + ", Area " + area
                             + ", Experiencia previa: " + experienciaPrevia);
                     contenedor.guardarAdministrativos();
-                    //-----------
-                }
-                    
+                } 
+                //------------------------------------------------------------------        
                 case 4-> { //Almacenar Capacitación
                     System.out.print("Ingrese identificador de la capacitación: ");
                     int identificador = scanner.nextInt();
                     scanner.nextLine();                    
-                    System.out.print("Ingrese RUT del cliente: ");
+                    System.out.print("Ingrese RUT del cliente sin guion: ");
                     int rutCliente = scanner.nextInt();
                     scanner.nextLine();                    
-                    System.out.print("Ingrese día: ");
+                    System.out.print("Ingrese dia: ");
                     String dia = scanner.nextLine();                    
                     System.out.print("Ingrese hora (HH:MM): ");
                     String hora = scanner.nextLine();                    
                     System.out.print("Ingrese lugar: ");
                     String lugar = scanner.nextLine();                    
-                    System.out.print("Ingrese duración: ");
+                    System.out.print("Ingrese duracion: ");
                     String duracion = scanner.nextLine();                    
                     System.out.print("Ingrese cantidad de asistentes: ");
                     int cantidadAsistentes = scanner.nextInt();
@@ -147,15 +150,14 @@ public class Principal{
                     //-----------
                     System.out.println("Los datos ingresados son: Identificador"
                             + " de la capacitacion: " + identificador + ", RUT: "
-                            + rutCliente + ", Día y hora: " + dia + " " + hora
+                            + rutCliente + ", Dia y hora: " + dia + " " + hora
                             + ", Lugar: " + lugar + ", Duracion: " + duracion
                             + ", Cantidad de asistentes: " + cantidadAsistentes);
                     contenedor.guardarCapacitaciones();
-                    //-----------
                 }
-                    
+                //------------------------------------------------------------------        
                 case 5-> { //Eliminar Usuario
-                    System.out.print("Ingrese RUT del usuario a eliminar: ");
+                    System.out.print("Ingrese RUT del usuario a eliminar sin guion: ");
                     int rut = scanner.nextInt();
                     scanner.nextLine();
                     contenedor.eliminarUsuario(rut);
@@ -164,33 +166,31 @@ public class Principal{
                     contenedor.guardarClientes();
                     contenedor.guardarProfesionales();
                     contenedor.guardarAdministrativos();
-                }
-                    
+                } 
+                //------------------------------------------------------------------        
                 case 6-> { //Listar Usuarios
                     contenedor.listarUsuarios();
                 }
-                    
+                //------------------------------------------------------------------            
                 case 7-> { //Listar Usuarios por Tipo
                     System.out.print("Ingrese el tipo de usuario"
                             + " (cliente/profesional/administrativo): ");
                     String tipoUsuario = scanner.nextLine();
                     contenedor.listarUsuariosPorTipo(tipoUsuario);
-                }
-                    
+                }  
+                //------------------------------------------------------------------        
                 case 8-> { //Listar Capacitaciones
                     contenedor.listarCapacitaciones();
                 }
-                    
+                //------------------------------------------------------------------        
                 case 9-> { //Salir
                     System.out.println("Saliendo...");
-                }
-                    
+                }                    
                 default-> {
                     System.out.println("Opción no válida. Intente nuevamente.");
                 }
-            }
-        //fin switch case
-            
+            } //fin switch case
+        
         } while (opcion != 9);    
         
         scanner.close();
@@ -203,9 +203,6 @@ public class Principal{
         contenedor.cargarCapacitaciones();
         contenedor.cargarEliminarUsuarios();
         contenedor.cargarListarUsuariosPorTipo();
-        contenedor.cargarListarCapacitaciones();
-
-        
-    }
-    
+        contenedor.cargarListarCapacitaciones();    
+    }    
 }
