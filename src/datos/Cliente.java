@@ -1,11 +1,12 @@
 
-package sprintfinalmodulodos.trabajador;
+package datos;
 
-import sprintfinalmodulodos.trabajador.Usuario;
 import java.time.LocalDate;
-import sprintfinalmodulodos.contenedor.Asesoria;
+import java.util.Objects;
+import contenedor.IAsesoria;
+import contenedor.IAsesoria;
 
-public class Cliente extends Usuario implements Asesoria {
+public class Cliente extends Usuario implements IAsesoria {
     
     private int rutCliente;
     private String nombres;
@@ -50,7 +51,6 @@ public class Cliente extends Usuario implements Asesoria {
     public int getRutCliente() {
         return rutCliente;
     }
-
     public void setRutCliente(int rutCliente) {
         if (rutCliente >= 99999999) {
             throw new IllegalArgumentException("El RUT debe ser menor a"
@@ -63,7 +63,6 @@ public class Cliente extends Usuario implements Asesoria {
     public String getNombres() {
         return nombres;
     }
-
     public void setNombres(String nombres) {
         if (nombres.length() < 5 || nombres.length() > 30) {
             throw new IllegalArgumentException("El nombre debe tener"
@@ -76,7 +75,6 @@ public class Cliente extends Usuario implements Asesoria {
     public String getApellidos() {
         return apellidos;
     }
-
     public void setApellidos(String apellidos) {
         if (apellidos.length() < 5 || apellidos.length() > 30) {
             throw new IllegalArgumentException("El apellido debe tener"
@@ -89,7 +87,6 @@ public class Cliente extends Usuario implements Asesoria {
     public String getTelefono() {
         return telefono;
     }
-
     public void setTelefono(String telefono) {
         if (telefono == null || telefono.isEmpty()) {
             throw new IllegalArgumentException("El telefono es obligatorio");
@@ -101,7 +98,6 @@ public class Cliente extends Usuario implements Asesoria {
     public String getAfp() {
         return afp;
     }
-
     public void setAfp(String afp) {
         if (afp.length() < 4 || afp.length() > 30) {
             throw new IllegalArgumentException("El nombre de la AFP debe tener"
@@ -114,7 +110,6 @@ public class Cliente extends Usuario implements Asesoria {
     public int getSistemaSalud() {
         return sistemaSalud;
     }
-
     public void setSistemaSalud(int sistemaSalud) {
         if (sistemaSalud != 1 && sistemaSalud != 2) {
             throw new IllegalArgumentException("El sistema de salud debe ser"
@@ -127,7 +122,6 @@ public class Cliente extends Usuario implements Asesoria {
     public String getDireccion() {
         return direccion;
     }
-
     public void setDireccion(String direccion) {
         if (direccion.length() > 70) {
             throw new IllegalArgumentException("La dirección debe tener un"
@@ -140,7 +134,6 @@ public class Cliente extends Usuario implements Asesoria {
     public String getComuna() {
         return comuna;
     }
-
     public void setComuna(String comuna) {
         if (comuna.length() > 50) {
             throw new IllegalArgumentException("La comuna debe tener un"
@@ -153,7 +146,6 @@ public class Cliente extends Usuario implements Asesoria {
     public int getEdad() {
         return edad;
     }
-
     public void setEdad(int edad) {
         if (edad < 0 || edad >= 150) {
             throw new IllegalArgumentException("La edad debe ser mayor o"
@@ -161,6 +153,61 @@ public class Cliente extends Usuario implements Asesoria {
         }
         this.edad = edad;
     }
+
+    //------------------
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.rutCliente;
+        hash = 89 * hash + Objects.hashCode(this.nombres);
+        hash = 89 * hash + Objects.hashCode(this.apellidos);
+        hash = 89 * hash + Objects.hashCode(this.telefono);
+        hash = 89 * hash + Objects.hashCode(this.afp);
+        hash = 89 * hash + this.sistemaSalud;
+        hash = 89 * hash + Objects.hashCode(this.direccion);
+        hash = 89 * hash + Objects.hashCode(this.comuna);
+        hash = 89 * hash + this.edad;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (this.rutCliente != other.rutCliente) {
+            return false;
+        }
+        if (this.sistemaSalud != other.sistemaSalud) {
+            return false;
+        }
+        if (this.edad != other.edad) {
+            return false;
+        }
+        if (!Objects.equals(this.nombres, other.nombres)) {
+            return false;
+        }
+        if (!Objects.equals(this.apellidos, other.apellidos)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefono, other.telefono)) {
+            return false;
+        }
+        if (!Objects.equals(this.afp, other.afp)) {
+            return false;
+        }
+        if (!Objects.equals(this.direccion, other.direccion)) {
+            return false;
+        }
+        return Objects.equals(this.comuna, other.comuna);
+    }    
     //-----------------------------
     //METODOS:
     //nombre completo tipo String
@@ -173,8 +220,7 @@ public class Cliente extends Usuario implements Asesoria {
                 + ", Prevision: " + (sistemaSalud == 1 ? "Fonasa" : "Isapre")
                 + ", Direccion: " + direccion + ", Comuna " + comuna
                 + ", Edad " + edad);
-    }
-    
+    }    
 
     @Override
     public void analizarUsuario(){
@@ -197,6 +243,5 @@ public class Cliente extends Usuario implements Asesoria {
                 + " de salud: " + (sistemaSalud == 1 ? "Fonasa" : "Isapre") 
                 + ", Dirección: " + direccion + ", Comuna: " + comuna 
                 + ", Edad: " + edad + ", RUT: " + rutCliente;
-    }
-    
+    }    
 }

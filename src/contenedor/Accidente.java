@@ -1,4 +1,4 @@
-package sprintfinalmodulodos.contenedor;
+package contenedor;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

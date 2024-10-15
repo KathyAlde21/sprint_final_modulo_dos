@@ -1,5 +1,7 @@
 
-package sprintfinalmodulodos;
+package contenedor;
+
+import java.util.Objects;
 
 
 public class Revision {
@@ -30,7 +32,6 @@ public class Revision {
     public int getIdentificador() {
         return identificador;
     }
-
     public void setIdentificador(int identificador) {
         this.identificador = identificador;
     }
@@ -39,7 +40,6 @@ public class Revision {
     public int getIdentificadorVisita() {
         return identificadorVisita;
     }
-
     public void setIdentificadorVisita(int identificadorVisita) {
         this.identificadorVisita = identificadorVisita;
     }
@@ -48,7 +48,6 @@ public class Revision {
     public String getNombreRevision() {
         return nombreRevision;
     }
-
     public void setNombreRevision(String nombreRevision) {
         if (nombreRevision.length() < 10 || nombreRevision.length() > 50) {
             throw new IllegalArgumentException("El nombre debe tener"
@@ -61,7 +60,6 @@ public class Revision {
     public String getDetalleRevisar() {
         return detalleRevisar;
     }
-
     public void setDetaleRevisar(String detalleRevisar) {
         if (detalleRevisar.length() > 100) {
             throw new IllegalArgumentException("El nombre debe tener"
@@ -74,7 +72,6 @@ public class Revision {
     public int getEstado() {
         return estado;
     }
-
     public void setEstado(int estado) {
         if (estado < 1 || estado > 3) {
             throw new IllegalArgumentException("El estado debe ser 1 (sin"
@@ -82,6 +79,45 @@ public class Revision {
                     + "solo se pueden ingresar los valores antes indicados.");
         }
         this.estado = estado;
+    }
+
+    //----------------------------------------------------
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + this.identificador;
+        hash = 23 * hash + this.identificadorVisita;
+        hash = 23 * hash + Objects.hashCode(this.nombreRevision);
+        hash = 23 * hash + Objects.hashCode(this.detalleRevisar);
+        hash = 23 * hash + this.estado;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Revision other = (Revision) obj;
+        if (this.identificador != other.identificador) {
+            return false;
+        }
+        if (this.identificadorVisita != other.identificadorVisita) {
+            return false;
+        }
+        if (this.estado != other.estado) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreRevision, other.nombreRevision)) {
+            return false;
+        }
+        return Objects.equals(this.detalleRevisar, other.detalleRevisar);
     }
     
     //**********************************
@@ -95,5 +131,4 @@ public class Revision {
                 + ", estado=" + estado 
                 + '}';
     }
-
 }

@@ -1,8 +1,11 @@
-package sprintfinalmodulodos.trabajador;
+package datos;
 
+import datos.Usuario;
 import java.time.LocalDate;
+import java.util.Objects;
 
-public class Administrativo extends Usuario {
+
+public class Administrativo extends Usuario{
     
     private String area;
     private String experienciaPrevia;
@@ -26,7 +29,6 @@ public class Administrativo extends Usuario {
     public String getArea() {
         return area;
     }
-
     public void setArea(String area) {
         if (area.length() < 5 || area.length() > 20) {
             throw new IllegalArgumentException("El área debe tener entre"
@@ -39,7 +41,6 @@ public class Administrativo extends Usuario {
     public String getExperienciaPrevia() {
         return experienciaPrevia;
     }
-
     public void setExperienciaPrevia(String experienciaPrevia) {
         if (experienciaPrevia.length() > 100) {
             throw new IllegalArgumentException("La experiencia previa debe"
@@ -48,6 +49,33 @@ public class Administrativo extends Usuario {
         this.experienciaPrevia = experienciaPrevia;
     }
     
+    //--------------------------------
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 13 * hash + Objects.hashCode(this.area);
+        hash = 13 * hash + Objects.hashCode(this.experienciaPrevia);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Administrativo other = (Administrativo) obj;
+        if (!Objects.equals(this.area, other.area)) {
+            return false;
+        }
+        return Objects.equals(this.experienciaPrevia, other.experienciaPrevia);
+    } 
+
     //-----------------------------
     //METODOS:
     
@@ -64,6 +92,5 @@ public class Administrativo extends Usuario {
     public String toString() {
         return super.toString() + ", Área: " + area + ", Experiencia previa: "
                 + experienciaPrevia;
-    }
-    
+    }    
 }

@@ -1,12 +1,14 @@
 
-package sprintfinalmodulodos.trabajador;
+package datos;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import sprintfinalmodulodos.contenedor.Asesoria;
+import java.util.Objects;
+import contenedor.IAsesoria;
+import contenedor.IAsesoria;
 
-public class Usuario implements Asesoria {
+public class Usuario implements IAsesoria {
     
     String nombre;
     private LocalDate fechaNacimiento;
@@ -60,10 +62,40 @@ public class Usuario implements Asesoria {
         }
         this.rut = rut;
     }
+    //--------------------
+    @Override
+    public int hashCode(){
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.nombre);
+        hash = 41 * hash + Objects.hashCode(this.fechaNacimiento);
+        hash = 41 * hash + this.rut;
+        return hash;
+    }
+    
+    @Override    
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (this.rut != other.rut) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        return Objects.equals(this.fechaNacimiento, other.fechaNacimiento);
+    }
 
     //******************************************
     //METODOS:
-    public String obtenerFechaNacimiento(){
+    public String obtenerFechaNacimiento() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
                 "dd/mm/yyyy");
         return this.fechaNacimiento.format(formatter);
@@ -96,7 +128,7 @@ public class Usuario implements Asesoria {
                 + ", RUT: " + rut); 
     }
     
-    @Override //implementada en interface Asesoria
+    @Override //implementada en interface IAsesoria
     public void analizarUsuario(){
         System.out.println("El nombre del usuario es: " + nombre 
                 + ", RUT " + rut);
